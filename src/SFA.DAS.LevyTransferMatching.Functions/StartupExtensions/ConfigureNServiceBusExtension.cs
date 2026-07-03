@@ -13,8 +13,7 @@ public static class ConfigureNServiceBusExtension
     {
         hostBuilder.UseNServiceBus((config, endpointConfiguration) =>
         {
-            endpointConfiguration.Transport.SubscriptionRuleNamingConvention = AzureRuleNameShortener.Shorten;
-            
+                        
             endpointConfiguration.AdvancedConfiguration.EnableInstallers();
             endpointConfiguration.AdvancedConfiguration.SendFailedMessagesTo(ErrorEndpointName);
             endpointConfiguration.AdvancedConfiguration.Conventions()
