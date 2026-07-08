@@ -36,6 +36,7 @@ public class TestHarness
             Console.WriteLine("G - ApplicationApprovedEmailEvent");
             Console.WriteLine("H - ApplicationWithdrawnAfterAcceptanceEvent");
             Console.WriteLine("I - PledgeCreditedEvent");
+            Console.WriteLine("J - ApprenticeshipEmployerTypeChangeEvent (NonLevy)");
             Console.WriteLine("X - Exit");
             Console.WriteLine("Press [Key] for Test Option");
             key = Console.ReadKey().Key;
@@ -88,6 +89,16 @@ public class TestHarness
                         await _publisher.Publish(new PledgeCreditedEvent(1, 8));
                         Console.WriteLine();
                         Console.WriteLine($"Published PledgeCreditedEvent");
+                        break;
+                    case ConsoleKey.J:
+                        await _publisher.Publish(new ApprenticeshipEmployerTypeChangeEvent
+                        {
+                            AccountId = accountId,
+                            ApprenticeshipEmployerType = Common.Domain.Types.ApprenticeshipEmployerType.NonLevy,
+                            Created = DateTime.UtcNow
+                        });
+                        Console.WriteLine();
+                        Console.WriteLine("Published ApprenticeshipEmployerTypeChangeEvent (NonLevy)");
                         break;
                 }
             }
