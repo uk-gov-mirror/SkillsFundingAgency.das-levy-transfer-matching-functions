@@ -72,4 +72,10 @@ public interface ILevyTransferMatchingApi
 
     [Post("functions/application-funding-expired")]
     Task ApplicationFundingExpired([Body] ApplicationFundingExpiredRequest request);
+
+    [Get("functions/active-pledge-ids-for-account")]
+    Task<GetActivePledgeIdsForAccountResponse> GetActivePledgeIdsForAccount([Query] long accountId, [Query] int page = 1, [Query] int pageSize = 100);
+
+    [Post("functions/cleanup-pledge-for-non-levy")]
+    Task CleanupPledgeForNonLevy([Body] CleanupPledgeForNonLevyRequest request);
 }
